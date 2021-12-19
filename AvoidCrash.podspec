@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
 s.name         = "AvoidCrash"
-s.platform = :ios, "7.0"
-s.version      = "2.5.3"
-s.ios.deployment_target = '7.0'
+s.platform = :ios, "10.0"
+s.version      = "2.5.4"
+s.ios.deployment_target = '10.0'
 s.summary      = "This framework can avoid Foundation framework potential crash danger"
 s.homepage     = "https://github.com/knight314/AvoidCrash"
 s.license      = "MIT"
