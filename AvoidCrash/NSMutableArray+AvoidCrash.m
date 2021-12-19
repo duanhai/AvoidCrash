@@ -41,6 +41,9 @@
         
         //getObjects:range:
         [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(getObjects:range:) method2Sel:@selector(avoidCrashGetObjects:range:)];
+        
+        [AvoidCrash exchangeInstanceMethod:arrayMClass method1Sel:@selector(replaceObjectAtIndex:withObject:) method2Sel:@selector(td_replaceObjectAtIndex:withObject:)];
+        
     });
     
     
@@ -163,7 +166,25 @@
     }
 }
 
-
-
+- (id)td_replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
+    id object = nil;
+//    if (self.count > index && anObject) {
+//
+//            [self td_replaceObjectAtIndex:index withObject:anObject];
+//        }else{
+//        }
+    
+    @try {
+      object = [self td_replaceObjectAtIndex:index withObject:anObject];
+    } @catch (NSException *exception) {
+        
+        NSString *defaultToDo = AvoidCrashDefaultIgnore;
+        [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
+        
+    } @finally {
+        return object;
+    }
+    
+}
 
 @end
