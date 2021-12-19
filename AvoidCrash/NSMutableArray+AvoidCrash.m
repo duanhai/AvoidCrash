@@ -166,23 +166,21 @@
     }
 }
 
+
+/// 拦截替换方法，当self.data不存在时候抛出的异常
+/// @param index <#index description#>
+/// @param anObject <#anObject description#>
 - (id)td_replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject {
-    id object = nil;
-//    if (self.count > index && anObject) {
-//
-//            [self td_replaceObjectAtIndex:index withObject:anObject];
-//        }else{
-//        }
     
     @try {
-      object = [self td_replaceObjectAtIndex:index withObject:anObject];
+      [self td_replaceObjectAtIndex:index withObject:anObject];
     } @catch (NSException *exception) {
         
         NSString *defaultToDo = AvoidCrashDefaultIgnore;
         [AvoidCrash noteErrorWithException:exception defaultToDo:defaultToDo];
         
     } @finally {
-        return object;
+
     }
     
 }
